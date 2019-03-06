@@ -1,0 +1,21 @@
+---
+title: "Birthday Problem"
+author: "Chris Kalra"
+date: "3/6/2019"
+output: html_document
+---
+
+```{r}
+#Birthday Problem
+
+m=10^6 ; n=23 ; x=numeric(m)
+for (i in 1:m) {
+  bday=sample(1:365, n, rep=T)
+  x[i] = n - length(unique(bday))
+}
+mean(x)
+2*sd(x)/sqrt(m) #Approximate Margin of Error
+1-mean(x==0) #Approimate Prob(At least 1 match)
+2*sd(x==0)/sqrt(m) #Margin of Error for Approximate Prob(No match)
+1 - prod(1-(0:(n-1))/365) #Exact Prob(At least 1 match with n people)
+```
